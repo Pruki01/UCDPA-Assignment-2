@@ -1,2 +1,2 @@
 # UCDPA-Assignment-2
-## The Pomodor project
+## The Pomodoro project
