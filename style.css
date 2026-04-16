@@ -1,0 +1,65 @@
+:root{
+
+    --primary-bg-colour: #45E545;
+    --secondary-bg-colour: #48B73E;
+
+    --primary-fo-colour: white;
+
+    --font-family: 
+}
+
+body{
+
+    margin: 0;
+    padding :0;
+    font-family: "Poppins", sans-serif;
+    background-color: var(--primary-bg-colour);
+    color: var(--primary-fo-colour);
+
+}
+
+header{
+
+    
+    display: flex;
+    margin: 0 auto;
+    width: 40vw;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#settings{
+
+    width: 2.5rem;
+    z-index: 2;
+
+}
+
+.modal__overlay{
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    
+}
+
+.modal__container{
+
+    height: 70vh;
+    width: 60vw;
+
+    background-color: red;
+
+}
+
+.hidden{
+
+    opacity: 0;
+
+}
