@@ -89,13 +89,12 @@ header{
     display: flex;
     justify-content: center;
 
-};
+}
 
 #tasks{
 
     display: flex;
     flex-direction: column;
-
     align-items: center;
 
 }
