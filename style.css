@@ -1,11 +1,12 @@
 :root{
 
     --primary-bg-colour: #45E545;
-    --secondary-bg-colour: #48B73E;
+    --secondary-bg-colour: #4AD53E;
+    --tertiary-bg-colour: #48B73E;
 
     --primary-fo-colour: white;
 
-    --font-family: 
+
 }
 
 body{
@@ -29,10 +30,48 @@ header{
 
 }
 
+.btn{
+
+
+
+}
+
 #settings{
 
     width: 2.5rem;
     z-index: 2;
+
+}
+
+#pomodoro__counter{
+
+    background-color: var(--secondary-bg-colour);
+    width: 50vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#pomodoro__buttons{
+
+    padding: 4vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#counter__container{
+
+    text-align: center;
+
+}
+
+#counter__buttons{
+
+    display: flex;
+    justify-items: center;
 
 }
 
@@ -62,5 +101,6 @@ header{
 .hidden{
 
     opacity: 0;
+    z-index: -1;
 
 }

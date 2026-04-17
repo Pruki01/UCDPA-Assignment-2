@@ -21,12 +21,45 @@
     </header>
 
     <main>
+        
+        <div id="pomodoro__counter">
 
+            <div id="pomodoro__buttons">
 
+                <div class="pomodoro__button">
+                    <button>Pomodoro</button>
+                </div>
+                <div class="pomodoro__button">
+                    <button>Short Break</button>
+                </div>
+                <div class="pomodoro__button">
+                    <button>Long Break</button>
+                </div>
+
+            </div>
+
+            <div id="counter__container">
+                <h1 id="container">25:00</h1>
+            </div>
+
+            <div id="counter__buttons">
+                <button>Start</button>
+            </div>
+
+        </div>
+
+        <div id="tasks">
+
+            <button type="submit" class="btn" id="task__button">Add Task</button>
+
+            <div id="todo__tasks">
+
+            </div>
+
+        </div>
     </main>
-    
-
-    <div class="modal__overlay">
+   
+    <div class="modal__overlay hidden">
         <div class="modal__container">
             <h2>This is a modal</h2>
 
@@ -36,7 +69,6 @@
             </div>
         </div>
     </div>
-   
     <script src="script.js"></script>
 </body>
 </html>
