@@ -1,7 +1,7 @@
 # UCDPA-Assignment-2
 ## The Pomodoro project
 
-This is a SPA that would allow its users to manage their time better.
+This is a SPA that would allow its users to manage their time by using timers.
 
 To access the website: https://pruki01.github.io/UCDPA-Assignment-2/
 
