@@ -52,13 +52,13 @@ longBreakCounter.addEventListener("click", ()=>{
 
 startBtn.addEventListener("click", () => {
 
-    setInterval()
+    setInterval(countdown, 1000);
 
 });
 
 function strTimeToIntTime(){
 
-    const splitTime = counter.innerHTML;
+    const splitTime = counter.innerHTML.split(":");
     let strMinutes  = splitTime[0];
     let strSeconds  = splitTime[1];
 
