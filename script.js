@@ -34,17 +34,37 @@ taskBtn.addEventListener("click", () => {
 pomodoroCounter.addEventListener("click", ()=>{
 
     counter.innerHTML = pomodoroCounterSettings;
+    transformToNubmers(pomodoroCounterSettings);
 
 })
 
 shortBreakCounter.addEventListener("click", ()=>{
 
     counter.innerHTML = shortCounterSettings;
+    transformToNubmers(shortCounterSettings);
 
 })
 
 longBreakCounter.addEventListener("click", ()=>{
 
     counter.innerHTML = longCounterSettings;
+    transformToNubmers(longCounterSettings);
 
 })
+
+function strTimeToIntTime(time){
+
+    const splitTime = time.split(":");
+    let strMinutes  = splitTime[0];
+    let strSeconds  = splitTime[1];
+
+    let minutes     = parseInt(strMinutes);
+    let seconds     = parseInt(strSeconds);
+
+    console.log(splitTime);
+    console.log(strMinutes);
+    console.log(minutes);
+    console.log(strSeconds);
+    console.log(seconds);
+
+}
