@@ -5,6 +5,7 @@ const counter           = document.querySelector("#counter");
 const pomodoroCounter   = document.querySelector("#pomodoro__timer");
 const shortBreakCounter = document.querySelector("#short__break-timer");
 const longBreakCounter  = document.querySelector("#long__break-timer");
+const startBtn          = document.querySelector("#start");
 
 let pomodoroCounterSettings   = "25:00";
 let shortCounterSettings      = "5:00";
@@ -49,9 +50,9 @@ longBreakCounter.addEventListener("click", ()=>{
 
 })
 
-function strTimeToIntTime(strTime){
+function strTimeToIntTime(){
 
-    const splitTime = strTime.split(":");
+    const splitTime = counter.innerHTML;
     let strMinutes  = splitTime[0];
     let strSeconds  = splitTime[1];
 
