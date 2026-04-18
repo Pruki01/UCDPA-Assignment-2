@@ -72,9 +72,9 @@ taskBtn.addEventListener("click", () =>{
     taskName.placeholder    = "Task";
 
     const description       = document.createElement("input");
-    taskName.type           = "type";
-    taskName.name           = "task__description";
-    taskName.placeholder    = "Description";
+    description.type           = "type";
+    description.name           = "task__description";
+    description.placeholder    = "Description";
 
     const button            = document.createElement("button");
     button.type             = "submit";

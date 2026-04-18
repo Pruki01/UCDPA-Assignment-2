@@ -99,6 +99,26 @@ header{
 
 }
 
+#todo__tasks form{
+
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+
+}
+
+#todo__tasks input{
+
+    padding: .25rem 1rem;
+
+}
+
+#todo__tasks input {
+
+    margin: .5rem;
+
+}
+
 .modal__overlay{
 
     position: fixed;
