@@ -4,6 +4,8 @@
     --secondary-bg-colour: #4AD53E;
     --tertiary-bg-colour: #48B73E;
 
+    --error-bg-colour: #e20f0f;
+
     --primary-fo-colour: white;
     --primary-btn-fsize: 2em;
 
@@ -119,6 +121,12 @@ header{
 
 }
 
+#error__box{
+
+    background-color: var(--error-bg-colour);
+
+}
+
 .modal__overlay{
 
     position: fixed;
@@ -146,5 +154,11 @@ header{
 
     opacity: 0;
     z-index: -1;
+
+}
+
+.minimized{
+
+    display: none;
 
 }

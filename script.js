@@ -7,6 +7,8 @@ const longBreakCounter  = document.querySelector("#long__break-timer");
 const startBtn          = document.querySelector("#start");
 const taskBtn           = document.querySelector("#task__button");
 const taskArea          = document.querySelector("#todo__tasks");
+let createBtn;
+let taskCounter         = 0;
 
 let pomodoroCounterSettings   = "25:11";
 let shortCounterSettings      = "5:00";
@@ -59,37 +61,60 @@ startBtn.addEventListener("click", () => {
 
 taskBtn.addEventListener("click", () =>{
 
-    const containerDiv = document.createElement("div");
-    containerDiv.id = "task-1";
+    const formWrapper           = document.createElement("div");
+    formWrapper.id              = "form__wraper";
 
-    const newForm   = document.createElement("form");
-    newForm.action = "/";
-    newForm.method = "GET";
+    const errorBox              = document.createElement("div");
+    errorBox.id                 = "error__box";
 
-    const taskName          = document.createElement("input");
-    taskName.type           = "type";
-    taskName.name           = "task__name";
-    taskName.placeholder    = "Task";
+    const errorMsg              = document.createElement("h3");
 
-    const description       = document.createElement("input");
-    description.type           = "type";
-    description.name           = "task__description";
-    description.placeholder    = "Description";
+    const containerDiv          = document.createElement("div");
+    containerDiv.id             = "create__task-form";
 
-    const button            = document.createElement("button");
-    button.type             = "submit";
-    button.textContent      = "Create";
+    const newForm               = document.createElement("form");
+    newForm.action              = "/";
+    newForm.method              = "GET";
+
+    const taskName              = document.createElement("input");
+    taskName.type               = "type";
+    taskName.name               = "task__name";
+    taskName.placeholder        = "Task";
+
+    const description           = document.createElement("input");
+    description.type            = "type";
+    description.name            = "task__description";
+    description.placeholder     = "Description";
+
+    const totalCount            = document.createElement("input");
+    totalCount.type             = "number";
+    totalCount.name             = "task__count";
+    totalCount.value            = "1";
+
+    const button                = document.createElement("button");
+    button.type                 = "button";
+    button.textContent          = "Create";
+    button.id                   = "create__button";
+
+    errorBox.appendChild(errorMsg);
 
     newForm.appendChild(taskName);
     newForm.appendChild(description);
+    newForm.appendChild(totalCount)
     newForm.appendChild(button);
     
     containerDiv.appendChild(newForm);
+    formWrapper.appendChild(errorBox);
+    formWrapper.appendChild(containerDiv);
     
     const fragment  = document.createDocumentFragment();
-    const taskForm  = fragment.appendChild(containerDiv);
+    const taskForm  = fragment.appendChild(formWrapper);
 
     taskArea.appendChild(taskForm);
+    createBtn = document.querySelector(`#${button.id}`);
+    createBtn.addEventListener("click", taskCreation);
+
+    taskBtn.classList.toggle("minimized");
 
 });
 
@@ -138,4 +163,33 @@ function countdown(){
     }
 
     counter.innerHTML = intTimeToStrTime([minutes, seconds]);
+}
+
+function taskCreation(){
+
+    const form  = document.querySelector("#create__task-form form");
+    const task  = form.querySelector("input[name='task__name']").value.trim();
+    const desc  = form.querySelector("input[name='task__description']").value.trim();
+    const count = form.querySelector("input[name='task__count']").value.trim();
+
+    const error = document.querySelector("#error__box h3");
+
+    console.log(task, desc, count);
+    if(!task){
+
+        console.log("TASK NOT HERE!");
+        error.textContent = "TASK NOT FOUND!";
+
+    } else{
+
+        console.log("Task here!")
+        document.querySelector("#form__wraper").remove();
+        taskBtn.classList.toggle("minimized");
+
+        taskCounter++;
+
+    }
+
+
+
 }
