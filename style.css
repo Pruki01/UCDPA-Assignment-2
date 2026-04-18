@@ -102,6 +102,12 @@ header{
 
 }
 
+#running_buttons{
+
+    display: flex;
+
+}
+
 #counter{
     font-size: var(--counter-fsize);
 
@@ -142,7 +148,7 @@ header{
 
 }
 
-#error__box{
+.error__box{
 
     background-color: var(--error-bg-colour);
     border-radius: 1em;
@@ -164,7 +170,7 @@ header{
 .task__content{
 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 
 }
 
@@ -182,6 +188,13 @@ header{
 
 }
 
+
+.task__description{
+
+    display: flex;
+    justify-content: space-between;
+
+}
 
 .modal__overlay{
 

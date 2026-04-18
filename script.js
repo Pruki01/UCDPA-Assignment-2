@@ -5,15 +5,31 @@ const pomodoroCounter   = document.querySelector("#pomodoro__timer");
 const shortBreakCounter = document.querySelector("#short__break-timer");
 const longBreakCounter  = document.querySelector("#long__break-timer");
 const startBtn          = document.querySelector("#start");
+const runningBtns       = document.querySelector("#running__buttons");
+const restartBtn        = document.querySelector("#reset");
+const stopBtn           = document.querySelector("#stop");
 const taskWrapper       = document.querySelector("#tasks");
 const taskBtn           = document.querySelector("#task__button");
 const taskArea          = document.querySelector("#todo__tasks");
 let createBtn;
 let taskCounter         = 0;
 
+let timer;
 let pomodoroCounterSettings   = "25:00";
 let shortCounterSettings      = "5:00";
 let longCounterSettings       = "15:00";
+
+let settings = ["25:00", "5:00", "15:00"];
+
+const CounterSettings = {
+
+    POMODORO: 0,
+    SHORT: 1,
+    LONG: 2
+
+};
+
+let currentTimerSetting = CounterSettings.POMODORO;
 
 settingsBtn.addEventListener("click", () =>{
 
@@ -30,25 +46,47 @@ colourBtn.addEventListener("click", () => {
 
 pomodoroCounter.addEventListener("click", ()=>{
 
-    counter.innerHTML = pomodoroCounterSettings;
+    currentTimerSetting = settings[CounterSettings.POMODORO];
+    counter.innerHTML   = currentTimerSetting;
 
 })
 
 shortBreakCounter.addEventListener("click", ()=>{
 
-    counter.innerHTML = shortCounterSettings;
+    currentTimerSetting = settings[CounterSettings.SHORT];
+    counter.innerHTML   = currentTimerSetting;
 
 })
 
 longBreakCounter.addEventListener("click", ()=>{
 
-    counter.innerHTML = longCounterSettings;
+    currentTimerSetting = settings[CounterSettings.LONG];
+    counter.innerHTML   = currentTimerSetting;
 
 })
 
 startBtn.addEventListener("click", () => {
 
-    setInterval(countdown, 1000);
+    timer = setInterval(countdown, 1000);
+    startBtn.classList.toggle("minimized");
+    runningBtns.classList.toggle("minimized");
+
+});
+
+stopBtn.addEventListener("click", () => {
+
+    clearInterval(timer);
+    startBtn.classList.toggle("minimized");
+    runningBtns.classList.toggle("minimized");
+
+});
+
+restartBtn.addEventListener("click", () => {
+
+    clearInterval(timer);
+    counter.innerHTML = currentTimerSetting;
+    startBtn.classList.toggle("minimized");
+    runningBtns.classList.toggle("minimized");
 
 });
 
@@ -58,8 +96,7 @@ taskBtn.addEventListener("click", () =>{
     formWrapper.id              = "form__wraper";
 
     const errorBox              = document.createElement("div");
-    errorBox.id                 = "error__box";
-    errorBox.className          = "minimized";
+    errorBox.className          = "error__box minimized";
 
     const errorMsg              = document.createElement("h3");
 
@@ -71,12 +108,12 @@ taskBtn.addEventListener("click", () =>{
     newForm.method              = "GET";
 
     const taskName              = document.createElement("input");
-    taskName.type               = "type";
+    taskName.type               = "text";
     taskName.name               = "task__name";
     taskName.placeholder        = "Task";
 
     const description           = document.createElement("input");
-    description.type            = "type";
+    description.type            = "text";
     description.name            = "task__description";
     description.placeholder     = "Description";
 
@@ -115,40 +152,72 @@ taskBtn.addEventListener("click", () =>{
 taskArea.addEventListener("click", (e) =>{
 
     const task = e.target.closest(".task__content");
-    console.log(task);
 
     if(task){
+
+        task.parentElement.classList.toggle("minimized");
 
         console.log(task);
         console.log(task.children);
 
-        const taskText      = task.children[0].textContent;
-        const count         = task.children[1].textContent;
+        const taskText              = task.children[0].textContent;
+        const count                 = task.children[1].textContent;
+        const descriptionText       = task.parentElement.children[1].children[0].textContent;
+
+        const formWrapper           = document.createElement("div");
+
+        const errorBox              = document.createElement("div");
+        errorBox.className          = "error__box minimized";
+
+        const errorMsg              = document.createElement("h3");
+
+        const containerDiv          = document.createElement("div");
 
         const newForm               = document.createElement("form");
         newForm.action              = "/";
         newForm.method              = "GET";
 
         const taskName              = document.createElement("input");
-        taskName.type               = "type";
+        taskName.type               = "text";
         taskName.name               = "task__name";
-        taskName.value              = taskText;
+        taskName.placeholder        = `${taskText}`;
 
         const description           = document.createElement("input");
-        description.type            = "type";
+        description.type            = "text";
         description.name            = "task__description";
-        description.placeholder     = "Description";
+        
+        if(descriptionText){
+
+            description.value       = descriptionText;
+
+        } else {
+
+            description.placeholder     = "Description";
+
+        }
 
         const totalCount            = document.createElement("input");
         totalCount.type             = "number";
         totalCount.name             = "task__count";
-        totalCount.value            = count;
+        totalCount.value            = "1";
 
         const button                = document.createElement("button");
         button.type                 = "button";
-        button.textContent          = "Save";
-        button.id                   = "save";
+        button.textContent          = "Create";
+        button.id                   = "save__button";
 
+        errorBox.appendChild(errorMsg);
+
+        newForm.appendChild(taskName);
+        newForm.appendChild(description);
+        newForm.appendChild(totalCount)
+        newForm.appendChild(button);
+        
+        containerDiv.appendChild(newForm);
+        formWrapper.appendChild(errorBox);
+        formWrapper.appendChild(containerDiv);
+
+        task.appendChild(formWrapper);
     }
 
 });
@@ -227,20 +296,21 @@ function taskCreation(){
         document.querySelector("#form__wraper").remove();
         taskBtn.classList.toggle("minimized");
 
-        const newDiv            = document.createElement("div");
-        newDiv.id               = `task-${taskCounter}`;
-        newDiv.className        = "task";
+        const newDiv                = document.createElement("div");
+        newDiv.id                   = `task-${taskCounter}`;
+        newDiv.className            = "task";
         
-        const taskDiv           = document.createElement("div");
-        taskDiv.className       = "task__content";
+        const taskDiv               = document.createElement("div");
+        taskDiv.className           = "task__content";
 
-        const newTask           = document.createElement("h2");
-        newTask.textContent     = task;
+        const newTask               = document.createElement("h2");
+        newTask.textContent         = task;
 
-        const newCount          = document.createElement("h4");
-        newCount.textContent    = `0/${count}`;
+        const newCount              = document.createElement("h4");
+        newCount.textContent        = `0/${count}`;
 
-        const descriptionDiv    = document.createElement("div"); 
+        const descriptionDiv        = document.createElement("div"); 
+        descriptionDiv.className    = "task__description";
 
         taskDiv.appendChild(newTask);
         taskDiv.appendChild(newCount);
