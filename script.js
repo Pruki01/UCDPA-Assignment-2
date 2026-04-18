@@ -177,14 +177,48 @@ function taskCreation(){
     console.log(task, desc, count);
     if(!task){
 
-        console.log("TASK NOT HERE!");
-        error.textContent = "TASK NOT FOUND!";
+        error.textContent = "Please enter your Task!";
+
+    } 
+    else if( 0 > count || !count){
+
+        error.textContent = "Please enter your count for the task!";
 
     } else{
 
-        console.log("Task here!")
         document.querySelector("#form__wraper").remove();
         taskBtn.classList.toggle("minimized");
+
+        const newDiv        = document.createElement("div");
+        newDiv.id           = `task-${taskCounter}`;
+        newDiv.className    = "task";
+        
+        const taskDiv       = document.createElement("div");
+
+        const newTask       = document.createElement("h2");
+        newTask.textContent = task;
+
+        const newCount      = document.createElement("h4");
+        newCount.textContent = `0/${count}`;
+
+        taskDiv.appendChild(newTask);
+        taskDiv.appendChild(newCount);
+
+        newDiv.append(taskDiv);
+
+        if(desc){
+
+            const newDescription        = document.createElement("p");
+            newDescription.textContent  = desc;
+            newDiv.appendChild(newDescription);
+
+        }
+
+
+        const fragment = document.createDocumentFragment();
+        fragment.appendChild(newDiv);
+
+        taskArea.appendChild(fragment);
 
         taskCounter++;
 
