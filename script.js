@@ -88,4 +88,5 @@ function countdown(strTime){
 
     }
 
+    return intTimeToStrTime([minutes, seconds]);
 }
