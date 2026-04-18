@@ -1,11 +1,12 @@
 const settingsBtn       = document.querySelector("#settings");
 const colourBtn         = document.querySelector("#colour__button");
-const taskBtn           = document.querySelector("#task__button");
 const counter           = document.querySelector("#counter");
 const pomodoroCounter   = document.querySelector("#pomodoro__timer");
 const shortBreakCounter = document.querySelector("#short__break-timer");
 const longBreakCounter  = document.querySelector("#long__break-timer");
 const startBtn          = document.querySelector("#start");
+const taskBtn           = document.querySelector("#task__button");
+const taskArea          = document.querySelector("#todo__tasks");
 
 let pomodoroCounterSettings   = "25:11";
 let shortCounterSettings      = "5:00";
@@ -56,6 +57,41 @@ startBtn.addEventListener("click", () => {
 
 });
 
+taskBtn.addEventListener("click", () =>{
+
+    const containerDiv = document.createElement("div");
+    containerDiv.id = "task-1";
+
+    const newForm   = document.createElement("form");
+    newForm.action = "/";
+    newForm.method = "GET";
+
+    const taskName          = document.createElement("input");
+    taskName.type           = "type";
+    taskName.name           = "task__name";
+    taskName.placeholder    = "Task";
+
+    const description       = document.createElement("input");
+    taskName.type           = "type";
+    taskName.name           = "task__description";
+    taskName.placeholder    = "Description";
+
+    const button            = document.createElement("button");
+    button.type             = "submit";
+    button.textContent      = "Create";
+
+    newForm.appendChild(taskName);
+    newForm.appendChild(description);
+    newForm.appendChild(button);
+    
+    const fragment  = document.createDocumentFragment();
+    const taskForm  = fragment.appendChild(containerDiv)
+                        .appendChild(newForm);
+
+    taskArea.appendChild(taskForm);
+
+});
+
 function strTimeToIntTime(){
 
     const splitTime = counter.innerHTML.split(":");
@@ -89,10 +125,14 @@ function countdown(){
 
         seconds--;
 
-    } else {
+    } else if(minutes > 0) {
 
         minutes--;
         seconds = 59;
+
+    } else {
+
+
 
     }
 
