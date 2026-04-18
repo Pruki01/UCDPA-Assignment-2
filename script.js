@@ -5,12 +5,13 @@ const pomodoroCounter   = document.querySelector("#pomodoro__timer");
 const shortBreakCounter = document.querySelector("#short__break-timer");
 const longBreakCounter  = document.querySelector("#long__break-timer");
 const startBtn          = document.querySelector("#start");
+const taskWrapper       = document.querySelector("#tasks");
 const taskBtn           = document.querySelector("#task__button");
 const taskArea          = document.querySelector("#todo__tasks");
 let createBtn;
 let taskCounter         = 0;
 
-let pomodoroCounterSettings   = "25:11";
+let pomodoroCounterSettings   = "25:00";
 let shortCounterSettings      = "5:00";
 let longCounterSettings       = "15:00";
 
