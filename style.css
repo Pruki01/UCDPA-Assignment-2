@@ -33,6 +33,15 @@ header{
 
 }
 
+.settings__icon{
+
+    width: 3em;
+    height: 3em;
+    color: var(--primary-fo-colour);
+    fill: currentColor;
+
+}
+
 .btn{
 
     padding: 2.5vh 3vw;
