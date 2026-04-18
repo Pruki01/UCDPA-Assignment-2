@@ -49,9 +49,9 @@ longBreakCounter.addEventListener("click", ()=>{
 
 })
 
-function strTimeToIntTime(time){
+function strTimeToIntTime(strTime){
 
-    const splitTime = time.split(":");
+    const splitTime = strTime.split(":");
     let strMinutes  = splitTime[0];
     let strSeconds  = splitTime[1];
 
@@ -62,9 +62,18 @@ function strTimeToIntTime(time){
 
 }
 
-function countdown(time){
+function intTimeToStrTime(intTime){
 
-    const currentTime   = strTimeToIntTime(time);
+    const intMinutes    = intTime[0];
+    const intSeconds    = intTime[1];
+    const strMinutes    = intMinutes.toString()
+    const strSeconds    = intSeconds.toString();
+    return strMinutes + ":" + strSeconds;
+}
+
+function countdown(strTime){
+
+    const currentTime   = strTimeToIntTime(strTime);
     let minutes         = currentTime[0];
     let seconds         = currentTime[1];
 
