@@ -7,7 +7,7 @@ const shortBreakCounter = document.querySelector("#short__break-timer");
 const longBreakCounter  = document.querySelector("#long__break-timer");
 const startBtn          = document.querySelector("#start");
 
-let pomodoroCounterSettings   = "25:00";
+let pomodoroCounterSettings   = "25:11";
 let shortCounterSettings      = "5:00";
 let longCounterSettings       = "15:00";
 
@@ -74,7 +74,8 @@ function intTimeToStrTime(intTime){
     const intMinutes    = intTime[0];
     const intSeconds    = intTime[1];
     const strMinutes    = intMinutes.toString()
-    const strSeconds    = intSeconds.toString();
+    const strSeconds    = intSeconds > 9 ? intSeconds.toString() : "0" + intSeconds.toString();
+    
     return strMinutes + ":" + strSeconds;
 }
 
