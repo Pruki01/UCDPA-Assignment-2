@@ -84,9 +84,10 @@ taskBtn.addEventListener("click", () =>{
     newForm.appendChild(description);
     newForm.appendChild(button);
     
+    containerDiv.appendChild(newForm);
+    
     const fragment  = document.createDocumentFragment();
-    const taskForm  = fragment.appendChild(containerDiv)
-                        .appendChild(newForm);
+    const taskForm  = fragment.appendChild(containerDiv);
 
     taskArea.appendChild(taskForm);
 
