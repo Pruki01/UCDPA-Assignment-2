@@ -67,6 +67,7 @@ taskBtn.addEventListener("click", () =>{
 
     const errorBox              = document.createElement("div");
     errorBox.id                 = "error__box";
+    errorBox.className          = "minimized";
 
     const errorMsg              = document.createElement("h3");
 
@@ -179,11 +180,14 @@ function taskCreation(){
     if(!task){
 
         error.textContent = "Please enter your Task!";
+        document.querySelector("#error__box").classList.toggle("minimized");
 
     } 
     else if( 0 > count || !count){
 
         error.textContent = "Please enter your count for the task!";
+        document.querySelector("#error__box").classList.toggle("minimized");
+
 
     } else{
 

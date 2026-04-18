@@ -141,6 +141,9 @@ header{
 #error__box{
 
     background-color: var(--error-bg-colour);
+    border-radius: 1em;
+    margin: 1em 0;
+    padding: .25em;
 
 }
 
