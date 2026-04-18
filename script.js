@@ -78,9 +78,9 @@ function intTimeToStrTime(intTime){
     return strMinutes + ":" + strSeconds;
 }
 
-function countdown(strTime){
+function countdown(){
 
-    const currentTime   = strTimeToIntTime(strTime);
+    const currentTime   = strTimeToIntTime();
     let minutes         = currentTime[0];
     let seconds         = currentTime[1];
 
