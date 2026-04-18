@@ -11,6 +11,10 @@
     --primary-btn-padding: 1em;
 
     --counter-fsize: 3em;
+    
+    --task-padding: .5em;
+    --task-fsize: 1em;
+    --task-sec-fszie: .8em;
 
     --content-width: clamp(65vw, 80vw, 90vw);
 
@@ -122,7 +126,7 @@ header{
 
     display: flex;
     flex-direction: column;
-    width: calc(var(--width) * 0.75);
+    width: calc(var(--content-width) * 0.8);
 
 }
 
@@ -143,9 +147,41 @@ header{
     background-color: var(--error-bg-colour);
     border-radius: 1em;
     margin: 1em 0;
-    padding: .25em;
+    padding: .2em;
 
 }
+
+.task{
+
+    background-color: var(--secondary-bg-colour);
+    padding: var(--task-padding);
+    border-radius: 1em;
+    width: var(--content-width);
+
+
+}
+
+.task__content{
+
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.task h2{
+
+    font-size: var(--task-fsize);
+    padding: .2em;
+
+}
+
+.task h4{
+
+    font-size: var(--task-sec-fszie);
+    padding: .2em;
+
+}
+
 
 .modal__overlay{
 
@@ -164,9 +200,9 @@ header{
 .modal__container{
 
     height: 70vh;
-    width: var(--width);
+    width: var(--content-width);
 
-    background-color: red;
+    background-color: var(--secondary-bg-colour);
 
 }
 

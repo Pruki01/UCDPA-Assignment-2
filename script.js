@@ -28,14 +28,6 @@ colourBtn.addEventListener("click", () => {
 
 })
 
-taskBtn.addEventListener("click", () => {
-
-    console.log("Btn Clicked!");
-
-    const taskArea = document.querySelector("#todo__tasks");
-
-});
-
 pomodoroCounter.addEventListener("click", ()=>{
 
     counter.innerHTML = pomodoroCounterSettings;
@@ -120,6 +112,47 @@ taskBtn.addEventListener("click", () =>{
 
 });
 
+taskArea.addEventListener("click", (e) =>{
+
+    const task = e.target.closest(".task__content");
+    console.log(task);
+
+    if(task){
+
+        console.log(task);
+        console.log(task.children);
+
+        const taskText      = task.children[0].textContent;
+        const count         = task.children[1].textContent;
+
+        const newForm               = document.createElement("form");
+        newForm.action              = "/";
+        newForm.method              = "GET";
+
+        const taskName              = document.createElement("input");
+        taskName.type               = "type";
+        taskName.name               = "task__name";
+        taskName.value              = taskText;
+
+        const description           = document.createElement("input");
+        description.type            = "type";
+        description.name            = "task__description";
+        description.placeholder     = "Description";
+
+        const totalCount            = document.createElement("input");
+        totalCount.type             = "number";
+        totalCount.name             = "task__count";
+        totalCount.value            = count;
+
+        const button                = document.createElement("button");
+        button.type                 = "button";
+        button.textContent          = "Save";
+        button.id                   = "save";
+
+    }
+
+});
+
 function strTimeToIntTime(){
 
     const splitTime = counter.innerHTML.split(":");
@@ -194,31 +227,42 @@ function taskCreation(){
         document.querySelector("#form__wraper").remove();
         taskBtn.classList.toggle("minimized");
 
-        const newDiv        = document.createElement("div");
-        newDiv.id           = `task-${taskCounter}`;
-        newDiv.className    = "task";
+        const newDiv            = document.createElement("div");
+        newDiv.id               = `task-${taskCounter}`;
+        newDiv.className        = "task";
         
-        const taskDiv       = document.createElement("div");
+        const taskDiv           = document.createElement("div");
+        taskDiv.className       = "task__content";
 
-        const newTask       = document.createElement("h2");
-        newTask.textContent = task;
+        const newTask           = document.createElement("h2");
+        newTask.textContent     = task;
 
-        const newCount      = document.createElement("h4");
-        newCount.textContent = `0/${count}`;
+        const newCount          = document.createElement("h4");
+        newCount.textContent    = `0/${count}`;
+
+        const descriptionDiv    = document.createElement("div"); 
 
         taskDiv.appendChild(newTask);
         taskDiv.appendChild(newCount);
 
-        newDiv.append(taskDiv);
 
         if(desc){
 
             const newDescription        = document.createElement("p");
             newDescription.textContent  = desc;
-            newDiv.appendChild(newDescription);
+            descriptionDiv.appendChild(newDescription);
 
         }
 
+        const deleteButton            = document.createElement("button");
+        deleteButton.id               = `delete-${taskCounter}`;
+        deleteButton.type             = "button";
+        deleteButton.textContent      = "Delete";
+
+        descriptionDiv.appendChild(deleteButton);
+
+        newDiv.append(taskDiv);
+        newDiv.append(descriptionDiv);
 
         const fragment = document.createDocumentFragment();
         fragment.appendChild(newDiv);
