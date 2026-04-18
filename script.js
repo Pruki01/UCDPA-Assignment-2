@@ -1,5 +1,8 @@
 const settingsBtn       = document.querySelector("#settings");
 const colourBtn         = document.querySelector("#colour__button");
+const pomodoroSetBtn    = document.querySelector("#pomodoro__settings-button");
+const shortBrSetBtn     = document.querySelector("#short__break-settingsbtn");
+const longBrSetBtn      = document.querySelector("#long__break-settingsbtn");
 const counter           = document.querySelector("#counter");
 const pomodoroCounter   = document.querySelector("#pomodoro__timer");
 const shortBreakCounter = document.querySelector("#short__break-timer");
@@ -41,6 +44,27 @@ colourBtn.addEventListener("click", () => {
 
     const colourSetting = document.querySelector("#colour__settings").value;
     document.querySelector("body").style.backgroundColor = colourSetting;
+
+})
+
+pomodoroCounter.addEventListener("click", ()=>{
+
+    const pomodoroSetting = document.querySelector("#pomodoro__settings").value;
+    settings[CounterSettings.POMODORO] = pomodoroSetting;
+
+})
+
+shortBrSetBtn.addEventListener("click", ()=>{
+
+    const shortBtnSet = document.querySelector("#short__break-settings").value;
+    settings[CounterSettings.SHORT] = shortBtnSet;
+
+})
+
+longBrSetBtn.addEventListener("click", ()=>{
+
+    const longBtnSet = document.querySelector("#long__break-settings").value;
+    settings[CounterSettings.LONG] = longBtnSet;
 
 })
 

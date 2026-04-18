@@ -171,6 +171,7 @@ header{
 
     display: flex;
     justify-content: space-between;
+    align-content: center;
 
 }
 
@@ -214,6 +215,8 @@ header{
 
     height: 70vh;
     width: var(--content-width);
+    display: flex;
+    justify-content: center; 
 
     background-color: var(--secondary-bg-colour);
 
